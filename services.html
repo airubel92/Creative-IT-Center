@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Creative IT Center</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #ff8c00;
+            --secondary-color: #2c3e50;
+            --accent-color: #27ae60;
+            --white: #ffffff;
+            --light-bg: #f4f7f6;
+            --dark-bg: #1a1a1a;
+            --text-dark: #333;
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 5px 15px rgba(0,0,0,0.05);
+            --shadow-lg: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Header & Navigation (Consistent) --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo img {
+            height: 50px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 15px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-btns {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-login {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-register {
+            background: var(--primary-color);
+            color: var(--white) !important;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* --- Page Hero --- */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        /* --- Services Styles (From your file) --- */
+        .section-padding { padding: 80px 0; }
+        .text-center { text-align: center; }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-detail-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-img-wrapper {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .service-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-detail-card:hover .service-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .service-icon-box {
+            width: 70px;
+            height: 70px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -65px auto 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: var(--shadow-sm);
+            border: 4px solid var(--primary-color);
+        }
+
+        .service-icon-box i {
+            font-size: 28px;
+            color: var(--primary-color);
+        }
+
+        /* --- Footer --- */
+        footer { background: #111; color: #ccc; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-section h3 { color: var(--white); margin-bottom: 20px; border-left: 4px solid var(--primary-color); padding-left: 10px; }
+        .footer-section ul { list-style: none; }
+        .footer-section a { color: #ccc; text-decoration: none; transition: var(--transition); }
+        .footer-section a:hover { color: var(--primary-color); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #333; }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 999; text-decoration: none;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .menu-icon { display: block; }
+            .nav-links {
+                position: fixed; top: 80px; left: -100%; background: var(--white); width: 100%; height: calc(100vh - 80px);
+                flex-direction: column; transition: 0.4s; padding-top: 30px; box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { left: 0; }
+            .nav-links li { margin: 15px 0; }
+            .nav-btns { flex-direction: column; width: 80%; margin-left: 0; }
+            .btn { text-align: center; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="https://img.freepik.com/free-vector/creative-gradient-it-logo-template_23-2148897042.jpg?size=338&ext=jpg" alt="CITC Logo">
+                    </a>
+                </div>
+
+                <div class="menu-icon" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="success-stories.html">Success Stories</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <div class="nav-btns">
+                        <li><a href="login.html" class="btn btn-login">Login</a></li>
+                        <li><a href="signup.html" class="btn btn-login">Sign Up</a></li>
+                        <li><a href="register.html" class="btn btn-register">REGISTER</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>আমাদের <span style="color: var(--primary-color);">পেশাদার</span> সার্ভিসসমূহ</h1>
+                <p>শুধু প্রশিক্ষণ নয়, আমরা প্রদান করি আধুনিক বিশ্বের সাথে তাল মিলিয়ে সেরা আইটি সলিউশন।</p>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 60px;">
+                    <h2 style="font-size: 2.5rem;">আপনার ব্যবসার জন্য <span style="color: var(--secondary-color);">স্মার্ট সলিউশন</span></h2>
+                    <p>আমরা বিশ্বাস করি আপনার সফলতাই আমাদের পরিচয়।</p>
+                </div>
+
+                <div class="grid-3">
+                    <div class="service-detail-card">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80" alt="Web Dev">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon-box"><i class="fas fa-code"></i></div>
+                            <h3>Web Development</h3>
+                            <p>আপনার ব্যবসার জন্য আমরা তৈরি করি হাই-কোয়ালিটি রেসপন্সিভ ওয়েবসাইট এবং ওয়েব অ্যাপ্লিকেশন।</p>
+                            <a href="contact.html" style="color: var(--primary-color); font-weight: 600; margin-top: 15px; display: inline-block; text-decoration: none;">অর্ডার করুন <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="service-detail-card">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80" alt="Design">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon-box"><i class="fas fa-bezier-curve"></i></div>
+                            <h3>UI/UX & Graphics</h3>
+                            <p>লোগো ডিজাইন থেকে শুরু করে ইউজার ফ্রেন্ডলি ইন্টারফেস ডিজাইন পর্যন্ত সব সমাধান এক জায়গায়।</p>
+                            <a href="contact.html" style="color: var(--primary-color); font-weight: 600; margin-top: 15px; display: inline-block; text-decoration: none;">অর্ডার করুন <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="service-detail-card">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" alt="Software">
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon-box"><i class="fas fa-terminal"></i></div>
+                            <h3>Custom Software</h3>
+                            <p>আপনার অফিস বা প্রতিষ্ঠানের হিসাব-নিকাশ সহজ করতে আমরা তৈরি করি কাস্টম ম্যানেজমেন্ট সফটওয়্যার।</p>
+                            <a href="contact.html" style="color: var(--primary-color); font-weight: 600; margin-top: 15px; display: inline-block; text-decoration: none;">অর্ডার করুন <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background: var(--dark-bg); color: var(--white); text-align: center;">
+            <div class="container">
+                <h2 style="font-size: 2.2rem; margin-bottom: 20px;">আপনার প্রজেক্ট নিয়ে কি চিন্তিত?</h2>
+                <p style="max-width: 700px; margin: 0 auto 30px; color: #ccc;">আমাদের দক্ষ টিমের সাথে আপনার আইডিয়া শেয়ার করুন এবং দ্রুত পেশাদার সমাধান পান।</p>
+                <a href="contact.html" class="btn btn-register" style="padding: 12px 30px;">ফ্রি কনসালটেশন নিন</a>
+            </div>
+        </section>
+    </main>
+
+    <a href="https://wa.me/8801641187427" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <img src="https://img.freepik.com/free-vector/creative-gradient-it-logo-template_23-2148897042.jpg?size=338&ext=jpg" alt="Logo" style="height: 40px; margin-bottom: 20px; filter: brightness(0) invert(1);">
+                    <p>আপনার লক্ষ্য অর্জনে ক্রিয়েটিভ আইটি সেন্টার সবসময় আপনার পাশে আছে।</p>
+                </div>
+                <div class="footer-section">
+                    <h3>দ্রুত লিংক</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>যোগাযোগ</h3>
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i> ১১/১, ব্লক# বি, পশ্চিম নুরেরচালা, গুলশান, ঢাকা</p>
+                    <p><i class="fas fa-phone" style="color: var(--primary-color);"></i> ০১৬৪১-১৮৭৪২৭</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Creative IT Center. Developed by Md. Aminul Islam.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    </script>
+</body>
+</html>

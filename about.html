@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Creative IT Center</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #ff8c00;
+            --secondary-color: #2c3e50;
+            --accent-color: #27ae60;
+            --white: #ffffff;
+            --light-bg: #f4f7f6;
+            --dark-bg: #1a1a1a;
+            --text-dark: #333;
+            --transition: all 0.4s ease;
+            --shadow-sm: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Header & Navigation (Consistent) --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo img { height: 50px; display: block; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li { margin-left: 20px; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 15px;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+
+        .nav-btns { display: flex; gap: 10px; margin-left: 20px; }
+
+        .btn {
+            padding: 8px 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-login { border: 1px solid var(--primary-color); color: var(--primary-color); }
+        .btn-register { background: var(--primary-color); color: var(--white) !important; }
+
+        .menu-icon { display: none; font-size: 24px; cursor: pointer; }
+
+        /* --- Page Hero --- */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            color: var(--white);
+        }
+
+        /* --- Team Section (From your file) --- */
+        .team-section { padding: 80px 0; text-align: center; }
+        .section-heading { margin-bottom: 50px; }
+        .section-heading h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .underline { width: 80px; height: 4px; background: var(--primary-color); margin: 0 auto; }
+
+        .management-group {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .trainers-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .member-card {
+            position: relative;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .member-img-box { position: relative; width: 100%; height: 350px; }
+        .member-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+
+        .member-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 140, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        .member-card:hover .member-overlay { opacity: 1; }
+        .member-card:hover .member-img-box img { transform: scale(1.1); }
+
+        .social-links { display: flex; gap: 15px; margin-top: 15px; }
+        .social-links a {
+            width: 40px; height: 40px; background: rgba(255, 255, 255, 0.2);
+            color: var(--white); display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; transition: 0.3s; transform: translateY(20px); opacity: 0;
+            text-decoration: none;
+        }
+
+        .member-card:hover .social-links a { transform: translateY(0); opacity: 1; }
+        .member-card:hover .social-links a:nth-child(1) { transition-delay: 0.1s; }
+        .member-card:hover .social-links a:nth-child(2) { transition-delay: 0.2s; }
+        .social-links a:hover { background: var(--white); color: var(--primary-color); }
+
+        /* --- Footer --- */
+        footer { background: #111; color: #ccc; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-section h3 { color: var(--white); margin-bottom: 20px; border-left: 4px solid var(--primary-color); padding-left: 10px; }
+        .footer-section ul { list-style: none; }
+        .footer-section a { color: #ccc; text-decoration: none; transition: var(--transition); }
+        .footer-section a:hover { color: var(--primary-color); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #333; }
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .menu-icon { display: block; }
+            .nav-links {
+                position: fixed; top: 80px; left: -100%; background: var(--white); width: 100%; height: calc(100vh - 80px);
+                flex-direction: column; transition: 0.4s; padding-top: 30px; box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { left: 0; }
+            .nav-links li { margin: 15px 0; }
+            .nav-btns { flex-direction: column; width: 80%; margin-left: 0; }
+            .btn { text-align: center; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="https://img.freepik.com/free-vector/creative-gradient-it-logo-template_23-2148897042.jpg?size=338&ext=jpg" alt="CITC Logo">
+                    </a>
+                </div>
+                <div class="menu-icon" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="success-stories.html">Success Stories</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <div class="nav-btns">
+                        <li><a href="login.html" class="btn btn-login">Login</a></li>
+                        <li><a href="signup.html" class="btn btn-login">Sign Up</a></li>
+                        <li><a href="register.html" class="btn btn-register">REGISTER</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>আমাদের <span style="color: var(--primary-color);">টিম</span></h1>
+                <p>ক্রিয়েটিভ আইটি সেন্টারের অভিজ্ঞ মেন্টর এবং পরিচালনা পর্ষদের সাথে পরিচিত হোন।</p>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <div class="container">
+                
+                <div class="section-heading">
+                    <h2>পরিচালনা পর্ষদ</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="management-group">
+                    <div class="member-card">
+                        <div class="member-img-box">
+                            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=600&q=80" alt="Chairman">
+                            <div class="member-overlay">
+                                <h3>চেয়ারম্যান</h3>
+                                <p>Founder & Chairman</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-img-box">
+                            <img src="https://images.unsplash.com/photo-1544168190-79c17527004f?auto=format&fit=crop&w=600&q=80" alt="Director">
+                            <div class="member-overlay">
+                                <h3>পরিচালক</h3>
+                                <p>Managing Director</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-heading" style="margin-top: 40px;">
+                    <h2>আমাদের ট্রেইনারগণ</h2>
+                    <div class="underline"></div>
+                </div>
+
+                <div class="trainers-group">
+                    <div class="member-card">
+                        <div class="member-img-box">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Trainer">
+                            <div class="member-overlay">
+                                <h3>মেন্টর ১</h3>
+                                <p>Full Stack Developer</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-img-box">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Trainer">
+                            <div class="member-overlay">
+                                <h3>মেন্টর ২</h3>
+                                <p>UI/UX Designer</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-img-box">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Trainer">
+                            <div class="member-overlay">
+                                <h3>মেন্টর ৩</h3>
+                                <p>Digital Marketing Expert</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-img-box">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Trainer">
+                            <div class="member-overlay">
+                                <h3>মেন্টর ৪</h3>
+                                <p>App Developer</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <img src="https://img.freepik.com/free-vector/creative-gradient-it-logo-template_23-2148897042.jpg?size=338&ext=jpg" alt="Logo" style="height: 40px; margin-bottom: 20px; filter: brightness(0) invert(1);">
+                    <p>সঠিক আইটি শিক্ষার মাধ্যমে আপনার ভবিষ্যৎ নিশ্চিত করুন। ক্রিয়েটিভ আইটি সেন্টার আপনার স্বপ্ন পূরণে বদ্ধপরিকর।</p>
+                </div>
+                <div class="footer-section">
+                    <h3>কুইক লিঙ্ক</h3>
+                    <ul>
+                        <li><a href="index.html">হোম</a></li>
+                        <li><a href="courses.html">কোর্সসমূহ</a></li>
+                        <li><a href="contact.html">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>যোগাযোগ</h3>
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i> ১১/১, ব্লক# বি, পশ্চিম নুরেরচালা, গুলশান, ঢাকা</p>
+                    <p><i class="fas fa-phone" style="color: var(--primary-color);"></i> ফোন: ০১৬৪১-১৮৭৪২৭</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Creative IT Center. Developed by Md. Aminul Islam.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    </script>
+</body>
+</html>
